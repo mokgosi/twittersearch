@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="form-group">
+        {{ form_start(form,{'action': path('search')}) }}
+        <div class="input-medium margin-top-10">
+            {{ form_widget(form.hashtag, {'attr': {'class': 'form-control input-medium', 'placeholder':'#hashtag'}}) }}
+        </div>
+        <div class="form-actions right">
+            <br />
+            {{ form_widget(form.search, { 'attr': {'class': 'btn btn-circle btn-sm green', 'label': 'Save Changes'} }) }}
+        </div>
+        {{ form_end(form) }}
+        <hr> 
+        {% if tweets %}
+            <h2>Search Results ( {{tweets|length}} results returned.) </h2>
+            <ul class='nav nav-tabs'>
+                {% for tweet in tweets %}
+                    <li class="media">
+                        <a class="pull-left" href="http://twitter.com/{{ tweet.userName }}">
+                            <img alt="{{ tweet.userName}}" class="todo-userpic" src="{{ tweet.profileImg }}" width="35px" height="35px"> </a>
+                        <div class="media-body todo-comment">
+                            <p class="todo-comment-head">
+                                <span class="todo-comment-username">{{ tweet.userName }}</span> @{{tweet.screenName}} &nbsp;
+                                <span class="todo-comment-date">{{ tweet.createdAt|date('Y-m-d H:i:s') }}</span>
+                            </p>
+                            <p class="todo-text-color">{{ tweet.text }}</p>
+                        </div>
+                    </li>
+
+                {% endfor %}
+            </ul>
+        {% endif%}
+    </div>
+
+{% endblock %}
+
+
