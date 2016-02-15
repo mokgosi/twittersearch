@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="form-group">
+    <div class="form-group" id='tweepzys'>
         {{ form_start(form) }}
         <div class="input-medium margin-top-10">
             {{ form_widget(form.hashtag, {'attr': {'class': 'form-control input-medium', 'placeholder':'#hashtag'}}) }}
@@ -15,7 +15,8 @@
         <hr> 
         {% if tweets %}
             <h2>Search Results ( {{tweets|length}} results returned.) </h2>
-            <ul class='nav nav-tabs'>
+            <input class="search pull-right" placeholder="filter..." />
+            <ul class='nav nav-tabs list'>
                 {% for tweet in tweets %}
                     <li class="media">
                         <a class="pull-left" href="http://twitter.com/{{ tweet.user.name }}">
