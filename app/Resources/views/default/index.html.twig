@@ -14,8 +14,8 @@
         {{ form_end(form) }}
         <hr> 
         {% if tweets %}
-            <h2>Search Results ( {{tweets|length}} results returned.) </h2>
-            <input class="search pull-right" placeholder="filter..." />
+            <h2>Tweets ( {{tweets|length}} results returned.) </h2>
+            <input class="search pull-right" placeholder="filter results..." />
             <ul class='nav nav-tabs list'>
                 {% for tweet in tweets %}
                     <li class="media">
